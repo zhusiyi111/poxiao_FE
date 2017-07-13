@@ -90,89 +90,100 @@
         <!--左侧导航结束-->
         <!--右侧部分开始-->
         <div id="page-wrapper" class="gray-bg dashbard-1">
-            <div class="row J_mainContent" id="content-main" style="height: auto;">
+            <div class="row J_mainContent" id="content-main" style=" margin-top:12px;">
+                <form method="get" class="form-horizontal">
+                    <div class="form-group" style="margin-top:12px;">
+                        <label class="col-sm-2 control-label">*活动名称</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" disabled="true" value="xxx">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:12px;">
+                        <label class="col-sm-2 control-label">*适用平台</label>
+                        <div class="col-sm-10">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="option1" id="inlineCheckbox1">PC端</label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="option2" id="inlineCheckbox2">M端</label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="option3" id="inlineCheckbox3">手Q</label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="option3" id="inlineCheckbox3">微信</label>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:12px;">
+                        <label class="col-sm-2 control-label">*适用用户</label>
+                        <div class="col-sm-3">
+                            <select class="form-control m-b" name="account">
+                                <option>全部用户</option>
+                                <option>铜牌及以上</option>
+                                <option>银牌及以上</option>
+                                <option>金牌及以上</option>
+                                <option>钻石及以上</option>
+                                <option>仅plus</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:12px;">
+                        <label class="col-sm-2 control-label">*活动时间</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="dateRange col-sm-6" name="ddd">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:12px;">
+                        <label class="col-sm-2 control-label">*满减类型</label>
+                        <div class="col-sm-3">
+                            <select class="form-control m-b" name="account">
+                                <option>满减</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:12px;">
+                        <label class="col-sm-2 control-label">*满减规则</label>
+                        <div class="col-sm-6">
+                            <span class="pull-left">满</span>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control">
+                            </div>
+                            <span class="pull-left">减</span>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </form>
                 <div class="col-sm-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-content">
-                            <form role="form" class="form-inline" style="overflow: hidden;">
-                                <div class="form-group col-sm-4">
-                                    <label class="col-sm-4 control-label">商品skuID</label>
-                                    <input type="text" class="form-control" name="aaa">
-                                </div>
-                                <div class="form-group col-sm-3">
-                                    <label for="exampleInputPassword2" class="col-sm-4 control-label">促销类型</label>
-                                    <select class="form-control m-b" name="bbb">
-                                        <option>全部</option>
-                                        <option>直降</option>
-                                        <option>满减</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-sm-4">
-                                    <label for="exampleInputPassword2" class="col-sm-4 control-label">促销状态</label>
-                                    <select class="form-control m-b" name="ccc">
-                                        <option>全部</option>
-                                        <option>未开始</option>
-                                        <option>进行中</option>
-                                        <option>已结束</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-sm-12">
-                                    <label for="exampleInputPassword2" class="col-sm-2 control-label">促销开始时间</label>
-                                    <input type="text" class="dateRange col-sm-3" name="ddd">
-                                </div>
-                                <div class="form-group col-sm-12" style="margin-top: 12px;">
-                                    <label for="exampleInputPassword2" class="col-sm-2 control-label">促销结束时间</label>
-                                    <input type="text" class="dateRange col-sm-3 " name="eee">
-                                </div>
-                                <div class="form-group col-sm-12 text-center" style="margin-top: 12px;">
-                                    <button class="btn btn-primary search-info" type="submit" style="margin-right: 60px;">检索</button>
-                                    <button class="btn btn-white go-back">重置</button>
-                                </div>
-                            </form>
+
+                            <table class="table table-striped table-bordered table-hover dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>商品sku</th>
+                                        <th>商品名称</th>
+                                        <th>商品图片</th>
+                                        <th>京东实时价格</th>
+                                        <th>该时段内的促销状态</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="gradeX">
+                                        <td>Trident</td>
+                                        <td>Trident</td>
+                                        <td>Internet Explorer 4.0</td>
+                                        <td>Win 95+</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                            </table>
+
                         </div>
                     </div>
                 </div>
-              <div class="col-sm-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
-                            <thead>
-                                <tr>
-                                    <th>商品skuID</th>
-                                    <th>促销ID</th>
-                                    <th>活动名称</th>
-                                    <th>促销类型</th>
-                                    <th>促销规则</th>
-                                    <th>开始时间</th>
-                                    <th>结束时间</th>
-                                    <th>状态</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="gradeX">
-                                    <td>Trident</td>
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">4</td>
-                                    <td class="center">X</td>
-                                    <td class="center">4</td>
-                                    <td class="center">X</td>
-                                </tr>
-                        </table>
-
-                    </div>
-                </div>
             </div>
         </div>
-            </div>
           
-        </div>
-        <!--右侧部分结束-->
-        
-
     </div>
+        <!--右侧部分结束-->
     <script src="../js/jquery.min.js?v=2.1.4"></script>
     <script src="../js/bootstrap.min.js?v=3.3.5"></script>
     <script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
@@ -226,28 +237,16 @@
             });
         });
         });
-        //初始化
-        var itemManage = {
-            init: function(){
-                bindEvent();
-            }
+        //拿取所有的促销详情
+        var url = window.location.href;
+        var id = GetQueryString('id');
+        getInfo(id);
+        function GetQueryString(name)
+        {
+             var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+             var r = window.location.search.substr(1).match(reg);
+             if(r!=null)return  unescape(r[2]); return null;
         }
-        itemManage.init();
-        getInfo(null);
-        //绑定事件
-        function bindEvent(){
-            var $pageWrapper = $('#page-wrapper');
-            //绑定搜索事件
-            $pageWrapper.on('click','.search-info', function(){
-
-            })
-            //绑定重置事件
-            $pageWrapper.on('click','.go-back', function(){
-                window.location.href = location.href; 
-                return false;
-            })
-        };
-        //获取某种促销下的全部品类
         function getInfo(param){
             $.ajax({
                 url: 'http://192.168.0.117:8080/product/all',
@@ -255,12 +254,10 @@
                 dataType: "jsonp",
                 processData: false,
                 scriptCharset:'GBK',
-                // data: param,
+                data: {
+                    id: param
+                },
                 success: function(data) {
-                    console.log(data);
-                    if(data.length>0){
-                        console.log(data);
-                    }
                 }
             });
         }
