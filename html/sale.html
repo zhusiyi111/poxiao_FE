@@ -151,7 +151,8 @@
 
 	<div class="main">	
 		<div class="container">
-			
+			<div id="module1"></div>
+			<div id="module2"></div>
 		</div>
 	</div>
 
@@ -164,53 +165,53 @@
 <script type="text/template" id="tpl1">
 	<style type="text/css">
 	.jSnappingup .mt{}
-.jSnappingup .mc{background:#fff; overflow:hidden;}
-.jSnappingup .mb{display:none;}
-.jSnappingup .mc ul{width:100%;}
-.jSnappingup li{float:left; width:284px; padding:5px 0; margin:0 5px; overflow:hidden; display:inline; position:relative;}
-.jSnappingup .jItem{background:#fff; height:auto; border:solid 2px #c81623;}
-.jSnappingup .jPic{position:relative; zoom:1; text-align:center; background:#fff; _height:100%;}
-.jSnappingup .jPic img{vertical-align:top;}
-.jSnappingup .jPic a{padding:5px 0; width:240px; height:240px; display:block; margin:0 auto;}
-.jSnappingup .jPic .jShade{text-align:center; color:#ecedf1; font-size:22px; position:absolute; width:100%; height:100%; top:0; left:0; z-index:1; display:none;}
-.jSnappingup .jPic .jShadeBg{width:100%; height:100%; _height:220px; background-color:#6b6b6b; opacity: 0.8; filter:progid:DXImageTransform.Microsoft.alpha(opacity=80); position:absolute; top:0; left:0;}
-.jSnappingup .jPic .jShade span{position:absolute; left:60px; top:95px; line-height:1.2;}
-.jSnappingup .jGoodsInfo{overflow:hidden; position:relative; zoom:1; padding:5px 5px 13px;}
-.jSnappingup .jDesc{height:16px; line-height:1.3; overflow:hidden; font-size:14.6px;}
-.jSnappingup .jDesc a{color:#5e5e5e; text-decoration:none;}
-.jSnappingup .jDesc a:hover{text-decoration:underline;}
-.jSnappingup .jDesc .jSlogan{color:#5e5e5e!important;}
-.jSnappingup .jPrice{height:24px; overflow:hidden;}
-.jSnappingup .jPrice span{float:left; display:inline;}
-.jSnappingup .jPrice .jsNumNo{text-decoration:none;}
-.jSnappingup .jdPrice{height:24px; padding-left:30px; overflow:hidden;}
-.jSnappingup .jdPrice .jRmb{font-size:20px; color:#ea1717; margin-top:4px;}
-.jSnappingup .jdPrice .jText{font-size:16px; color:#666; margin-top:4px;}
-.jSnappingup .jdPrice .jdNum{font-size:26px; color:#ea1717; line-height:0.9;}
-.jSnappingup .jdPrice .jdNumNo{font-size:20px; color:#ea1717;}
-.jSnappingup .jSalePrice{color:#9ed1f9; text-decoration:line-through; overflow:hidden; clear:both;}
-.jSnappingup .jSalePrice .jText{text-decoration:line-through;}
-.jSnappingup .jSalePrice .jRmb{text-decoration:line-through;}
-.jSnappingup .jSalePrice .jsNum{text-decoration:line-through;}
-.jSnappingup .jBtnArea{width:79px; height:60px; overflow:hidden; position:absolute; right:7px; bottom:7px; background:url(//img13.360buyimg.com/cms/g16/M00/0B/17/rBEbRVN_CnIIAAAAAAAOM_Cw4tkAACSEQB0YkgAAA5L500.gif) center center no-repeat;}
-.jSnappingup .jWait .jBtnArea{}
-.jSnappingup .jGo .jBtnArea{background-image:url(//img13.360buyimg.com/cms/g16/M00/0B/17/rBEbRlN_CnYIAAAAAAAOnt8U2N0AACSEQCLl08AAA62681.gif);}
-.jSnappingup .jEnd .jBtnArea{background-image:url(//img14.360buyimg.com/cms/g16/M00/0B/17/rBEbRlN_CnoIAAAAAAAOLq_ovtQAACSEQCkzEUAAA5G272.gif);}
-.jSnappingup .jBtnArea a{display:block; height:100%; text-indent:-9999px;}
-.jSnappingup .iconMember{height:24px; line-height:24px; padding-left:30px; font-size:16px; color:#df0314; background:url(//img14.360buyimg.com/cms/g13/M04/0A/01/rBEhVFKhL9EIAAAAAAAJ5ca8LfoAAGbbwHiJgsAAAn9517.gif) 1px no-repeat; margin-top:8px;}
-.jSnappingup .iconMember.copper{background-image:url(//img14.360buyimg.com/cms/g13/M04/0A/01/rBEhVFKhL9EIAAAAAAAJ5ca8LfoAAGbbwHiJgsAAAn9517.gif);}
-.jSnappingup .iconMember.silver{background-image:url(//img11.360buyimg.com/cms/g15/M00/1A/13/rBEhWFKhMBQIAAAAAAAJ6nwr6sQAAGZ7gImjA8AAAoC503.gif);}
-.jSnappingup .iconMember.gold{background-image:url(http://img12.360buyimg.com/cms/g15/M09/1A/13/rBEhWlKhL9YIAAAAAAAJ-eqq3m4AAGZ7QKJZc0AAAoR855.gif);}
-.jSnappingup .jEnd .jShade{display:block;}
+		.jSnappingup .mc{background:#fff; overflow:hidden;}
+		.jSnappingup .mb{display:none;}
+		.jSnappingup .mc ul{width:100%;}
+		.jSnappingup li{float:left; width:284px; padding:5px 0; margin:0 5px; overflow:hidden; display:inline; position:relative;}
+		.jSnappingup .jItem{background:#fff; height:auto; border:solid 2px #c81623;}
+		.jSnappingup .jPic{position:relative; zoom:1; text-align:center; background:#fff; _height:100%;}
+		.jSnappingup .jPic img{vertical-align:top;}
+		.jSnappingup .jPic a{padding:5px 0; width:240px; height:240px; display:block; margin:0 auto;}
+		.jSnappingup .jPic .jShade{text-align:center; color:#ecedf1; font-size:22px; position:absolute; width:100%; height:100%; top:0; left:0; z-index:1; display:none;}
+		.jSnappingup .jPic .jShadeBg{width:100%; height:100%; _height:220px; background-color:#6b6b6b; opacity: 0.8; filter:progid:DXImageTransform.Microsoft.alpha(opacity=80); position:absolute; top:0; left:0;}
+		.jSnappingup .jPic .jShade span{position:absolute; left:60px; top:95px; line-height:1.2;}
+		.jSnappingup .jGoodsInfo{overflow:hidden; position:relative; zoom:1; padding:5px 5px 13px;}
+		.jSnappingup .jDesc{height:16px; line-height:1.3; overflow:hidden; font-size:14.6px;}
+		.jSnappingup .jDesc a{color:#5e5e5e; text-decoration:none;}
+		.jSnappingup .jDesc a:hover{text-decoration:underline;}
+		.jSnappingup .jDesc .jSlogan{color:#5e5e5e!important;}
+		.jSnappingup .jPrice{height:24px; overflow:hidden;}
+		.jSnappingup .jPrice span{float:left; display:inline;}
+		.jSnappingup .jPrice .jsNumNo{text-decoration:none;}
+		.jSnappingup .jdPrice{height:24px; padding-left:30px; overflow:hidden;}
+		.jSnappingup .jdPrice .jRmb{font-size:20px; color:#ea1717; margin-top:4px;}
+		.jSnappingup .jdPrice .jText{font-size:16px; color:#666; margin-top:4px;}
+		.jSnappingup .jdPrice .jdNum{font-size:26px; color:#ea1717; line-height:0.9;}
+		.jSnappingup .jdPrice .jdNumNo{font-size:20px; color:#ea1717;}
+		.jSnappingup .jSalePrice{color:#9ed1f9; text-decoration:line-through; overflow:hidden; clear:both;}
+		.jSnappingup .jSalePrice .jText{text-decoration:line-through;}
+		.jSnappingup .jSalePrice .jRmb{text-decoration:line-through;}
+		.jSnappingup .jSalePrice .jsNum{text-decoration:line-through;}
+		.jSnappingup .jBtnArea{width:79px; height:60px; overflow:hidden; position:absolute; right:7px; bottom:7px; background:url(//img13.360buyimg.com/cms/g16/M00/0B/17/rBEbRVN_CnIIAAAAAAAOM_Cw4tkAACSEQB0YkgAAA5L500.gif) center center no-repeat;}
+		.jSnappingup .jWait .jBtnArea{}
+		.jSnappingup .jGo .jBtnArea{background-image:url(//img13.360buyimg.com/cms/g16/M00/0B/17/rBEbRlN_CnYIAAAAAAAOnt8U2N0AACSEQCLl08AAA62681.gif);}
+		.jSnappingup .jEnd .jBtnArea{background-image:url(//img14.360buyimg.com/cms/g16/M00/0B/17/rBEbRlN_CnoIAAAAAAAOLq_ovtQAACSEQCkzEUAAA5G272.gif);}
+		.jSnappingup .jBtnArea a{display:block; height:100%; text-indent:-9999px;}
+		.jSnappingup .iconMember{height:24px; line-height:24px; padding-left:30px; font-size:16px; color:#df0314; background:url(//img14.360buyimg.com/cms/g13/M04/0A/01/rBEhVFKhL9EIAAAAAAAJ5ca8LfoAAGbbwHiJgsAAAn9517.gif) 1px no-repeat; margin-top:8px;}
+		.jSnappingup .iconMember.copper{background-image:url(//img14.360buyimg.com/cms/g13/M04/0A/01/rBEhVFKhL9EIAAAAAAAJ5ca8LfoAAGbbwHiJgsAAAn9517.gif);}
+		.jSnappingup .iconMember.silver{background-image:url(//img11.360buyimg.com/cms/g15/M00/1A/13/rBEhWFKhMBQIAAAAAAAJ6nwr6sQAAGZ7gImjA8AAAoC503.gif);}
+		.jSnappingup .iconMember.gold{background-image:url(http://img12.360buyimg.com/cms/g15/M09/1A/13/rBEhWlKhL9YIAAAAAAAJ-eqq3m4AAGZ7QKJZc0AAAoR855.gif);}
+		.jSnappingup .jEnd .jShade{display:block;}
 	</style>
 	<div class="j-module jSnappingup" module-function="autoLayout,base" module-param="{node:'li', spacingType:'margin', size:0.5, waitCls:'jWait', underwayCls:'jGo', overCls:'jEnd'}" >
 	<ul>
-		{{ for(var i = 0; data.products[i]; i++){ }}
+		{{ for(var i = 0; data[i]; i++){ }}
 		<li class="jWait" prompt-id="$promoRec.id">
 			<div class="jItem">
 				<div class="jPic">
 					<a href="$!jshopProduct.getBuyUrl($!promoRec.skuId)" target="_blank">
-						<img src="$!jshopCommon.getImage($!promoRec.goodsImg,6)" alt="$!promoRec.goodsName" height="240" width="240" />
+						<img src="{{data[i].imgPath}}" alt="$!promoRec.goodsName" height="240" width="240" />
 					</a>
                     <div class="jShade">
                         <div class="jShadeBg"></div>
@@ -219,14 +220,14 @@
 				</div>
 				<div class="jGoodsInfo">
 					<div class="jDesc" title="$!promoRec.goodsName">
-						<a href="$!jshopProduct.getBuyUrl($!promoRec.skuId)" target="_blank">{{data.products[i].name}}</a>
+						<a href="$!jshopProduct.getBuyUrl($!promoRec.skuId)" target="_blank">{{data[i].productDesc}}</a>
 					</div>
                    <div class="iconMember gold">金牌及以上会员专享价</div>  
 				   <div class="jPrice">
 						<div class="jdPrice">
 							<span class="jText">促销价：</span>
 							<span class="jRmb">¥</span>
-							<span class="jdNum">{{data.products[i].price}}</span>
+							<span class="jdNum">{{data[i].price}}</span>
 						</div>
 					</div>
 					<div class="jBtnArea">
@@ -240,98 +241,138 @@
 </div>
 </script>
 <script type="text/template" id="tpl2">
-	<style type="text/css">
-		.jGoodsRecommend .mt{}
-	.jGoodsRecommend .mc{background:#fff; overflow:hidden;}
-	.jGoodsRecommend .mb{display:none;}
-	.jGoodsRecommend .mc ul{width:100%;}
-	.jGoodsRecommend li{float:left; width:192px; padding:6px 0; margin:0 3px; overflow:hidden; display:inline; position:relative;}
-	.jGoodsRecommend  .jItem{background:#fff; height:auto; border:solid 2px #c81623;}
-	.jGoodsRecommend .jPic{position:relative; text-align:center; background:#fff; _height:100%;}
-	.jGoodsRecommend .jPic img{vertical-align:top;width:100px;heigth:100px;}
-	.jGoodsRecommend .jPic a{padding:5px 0; width:193px; height:94px; display:block; margin:0 auto;}
-	.jGoodsRecommend .jPic .jShade{text-align:center; color:#ecedf1; font-size:14px; position:absolute; width:100%; height:100%; top:0; left:0; z-index:1; display:none;}
-	.jGoodsRecommend .jPic .jShadeBg{width:100%; height:100%; _height:220px; background-color:#6b6b6b; opacity: 0.8; filter:progid:DXImageTransform.Microsoft.alpha(opacity=80); position:absolute; top:0; left:0;}
-	.jGoodsRecommend .jPic .jShade span{position:absolute; left:30px; top:40px; line-height:1.2;}
-	.jGoodsRecommend  .jGoodsInfo{overflow:hidden; position:relative; zoom:1; padding:5px 5px 13px;}
-	.jGoodsRecommend  .jDesc{height:30px; line-height:1.3; overflow:hidden; font-size:12px;}
-	.jGoodsRecommend  .jDesc a{color:#5e5e5e; text-decoration:none;}
-	.jGoodsRecommend .jDesc a:hover{text-decoration:underline;}
-	.jGoodsRecommend .jDesc .jSlogan{color:#5e5e5e!important;}
-	.jGoodsRecommend .jPrice{height:24px; overflow:hidden; text-align:center; font-size:0;}
-	.jGoodsRecommend .jPrice span{display:inline-block; *display:inline; zoom:1; vertical-align:middle; font-size:12px;}
-	.jGoodsRecommend .jPrice .jsNumNo{text-decoration:none;}
-	.jGoodsRecommend .jdPrice{height:24px; overflow:hidden;}
-	.jGoodsRecommend .jdPrice .jRmb{font-size:14px; color:#ea1717;}
-	.jGoodsRecommend .jdPrice .jText{font-size:12px; color:#666;}
-	.jGoodsRecommend .jdPrice .jdNum{font-size:18px; color:#ea1717; line-height:1.4;}
-	.jGoodsRecommend .jdPrice .jdNumNo{font-size:20px; color:#ea1717;}
-	.jGoodsRecommend .jSalePrice{color:#9ed1f9; text-decoration:line-through; overflow:hidden; clear:both;}
-	.jGoodsRecommend .jSalePrice .jText{text-decoration:line-through;}
-	.jGoodsRecommend .jSalePrice .jRmb{text-decoration:line-through;}
-	.jGoodsRecommend.jSalePrice .jsNum{text-decoration:line-through;}
-	.jGoodsRecommend .jBtnArea{padding-top:5px;}
-	.jGoodsRecommend .jBtnArea a{display:none; width:74px; height:20px; line-height:20px; margin:0 auto; font-size:12px; text-align:center; color:#fff; background:#b00b08;
-	 background:-moz-linear-gradient(top, #fd4442, #b00b08);
-	 background:-webkit-gradient(linear, 0 0, 0 bottom, from(#fd4442), to(#b00b08));
-	 background:-o-linear-gradient(top, #fd4442, #b00b08);
-	 background:-ms-linear-gradient(top, #fd4442, #b00b08);
-	 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fd4442', endColorstr='#b00b08'); border-radius:3px;}
-	 .jGoodsRecommend .jBtnArea .btnWait,  .jGoodsRecommend .jBtnArea .btnEnd{background:#666;
-	 background:-moz-linear-gradient(top, #999, #666);
-	 background:-webkit-gradient(linear, 0 0, 0 bottom, from(#999), to(#666));
-	 background:-o-linear-gradient(top, #999, #666);
-	 background:-ms-linear-gradient(top, #999, #666);
-	 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#999999', endColorstr='#666666');}
-	 .jGoodsRecommend .jWait .jBtnArea .btnWait,  .jGoodsRecommend .jGo .jBtnArea .btnGo,  .jGoodsRecommend .jEnd .jBtnArea .btnEnd{display:block;}
-	 .jGoodsRecommend .jEnd .jShade{display:block;}
+	<style>
+		.ny-goods4 .d-soldout b{z-index: 21 !important;}
+	    .ny-goods4 .jSortContent{height:100%;}
+	    .ny-goods4 .jSortContent ul{ margin-right:-10px;padding-bottom: 30px}
+	    .ny-goods4 .jSortContent ul:after{content:"";display:block;clear:both;}
+	    .ny-goods4 .jSortContent ul.current{display:block;}
+	    .ny-goods4 li{position:relative;height:360px; float:left;background: #fff;font-family: \5FAE\8F6F\96C5\9ED1;display: inline;margin-right:10px;margin-bottom:10px;}
+	    .ny-goods4 .jItem{}
+	    .ny-goods4 .jPic{width:220px;height:220px;padding:10px;position: relative;}
+	    .ny-goods4 .jPic .desc { 
+	    color:#fff; 
+	    background:rgba(0,0,0,0.5); 
+	    position: absolute;
+	    line-height:18px;
+	    bottom:0;padding:10px;
+	    left:0;
+	    display:none;
+	    width:220px;
+	    }
+	    .ny-goods4 .jPic .desc span{ display:block;max-height:36px;overflow:hidden;}
+	    .ny-goods4 .jPic img{ width:220px;height:220px;}
+	    .ny-goods4 .jGoodsInfo{ width:220px; 
+	        padding:0 10px;
+	        z-index: 20;
+	        position: relative;
+	        background: #fff;
+	        height: 120px;
+	    }
+	    .ny-goods4 .jGoodsInfo .sale-tag{ height:17px;margin-bottom:10px;}
+	    .ny-goods4 .jGoodsInfo .sale-tag label{
+	        display: inline-block;
+	        border: solid 1px #e60041;
+	        color: #e60041;
+	        height: 15px;
+	        line-height: 15px;
+	        margin-right: 1px;
+	        padding: 0 4px;
+	    }
+	    .ny-goods4 .jDesc{height:40px;
+	     line-height:20px; 
+	    overflow:hidden;margin-bottom:7px;
+	    padding-top:7px;
+	    border-top:solid 1px #eaeae9;
+	    }
+	    .ny-goods4 .jDesc a{color: #333;text-decoration: none;font-family: \5FAE\8F6F\96C5\9ED1;}
+	    .ny-goods4 .jDesc a:hover{color:#E4393C; text-decoration:underline;}
+	    .ny-goods4 .jdPrice{color: #e11445; display:inline-block}
+	    .ny-goods4 .jPrice label{
+	        background: url(//img14.360buyimg.com/cms/jfs/t3262/348/4904529930/500/5c643a72/5858f992N7d588608.png) no-repeat 0 0;
+	        color: #fff;
+	        display: inline-block;
+	        vertical-align: top;
+	        line-height: 100%;
+	        margin-right: 5px;
+	        width:51px;
+	        height: 18px;
+	        line-height: 18px;
+	        text-align: center;
+	    }
+	    .ny-goods4 .jdPrice span{}
+	    .ny-goods4 .jdPrice .jRmb{font-size: 20px;}
+	    .ny-goods4 .jdPrice .jdNum{font-size:20px;}
+	    .ny-goods4 .jdPrice .jdNumNo{font-size:20px;}
+	    .ny-goods4 .jBtnArea{
+	    display: block;
+	        height: 30px;
+	        line-height: 30px;
+	        font-size: 14px;
+	        text-align: center;
+	        background: #e40b34;
+	        position: absolute;
+	        bottom: 5px;
+	        z-index: 10;
+	        width: 100%;
+	        color: #d50032;
+	       -webkit-transition: all .3s ease-in 0s;
+	        -moz-transition: all .3s ease-in 0s;
+	        -ms-transition: all .3s ease-in 0s;
+	        -o-transition: all .3s ease-in 0s;
+	        transition: all .3s linear 0s;
+	        color:#fff;
+	    }
+	    .ny-goods4 .jBtnArea span{text-align: center;font-size:22px;width:80px;height:30px;line-height:30px;color:#e53d40;display:block;position:absolute;top:0;left:50%;z-index:0;margin-left:-40px;opacity:0;-webkit-animation:animations 1s ease-out;}
+	    @-webkit-keyframes animations{
+	        0%{top:0px;opacity:1;}
+	        100%{top:-100px;opacity:0;}
+	    }
+	    .ny-goods4 .jBtnArea em{background: url('//img11.360buyimg.com/cms/jfs/t634/288/244617125/1300/5e15a7bf/5459cd25N0f33e6e4.png') 0 0 no-repeat;display: inline-block;width: 28px;height: 25px;vertical-align: middle;margin-right: 5px;}
+	    .ny-goods4 .jPromotionLabel{width:46px; height:46px; background:url(//img14.360buyimg.com/cms/jfs/t907/234/814806043/1293/a884a8e0/554b00b9Nfb0e13cf.png) no-repeat;  _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='//img14.360buyimg.com/cms/jfs/t907/234/814806043/1293/a884a8e0/554b00b9Nfb0e13cf.png'); _background-image:none;  position:absolute; top:0; right:10px;}
+	    .ny-goods4 .jPromotionTextArea{overflow:hidden; text-align:center; padding:2px 5px; line-height:1.2; color:#fff; font-size:14px;}
+	    .ny-goods4 .jPromotionText1{display:block;}
 
-	.jGoodsRecommend .iconMember{height:24px; line-height:24px; padding-left:28px; font-size:12px; color:#df0314; background:url(//img14.360buyimg.com/cms/g13/M04/0A/01/rBEhVFKhL9EIAAAAAAAJ5ca8LfoAAGbbwHiJgsAAAn9517.gif) 1px no-repeat; margin-top:8px;}
-	.jGoodsRecommend .iconMember .copper{background-image:url(//img14.360buyimg.com/cms/g13/M04/0A/01/rBEhVFKhL9EIAAAAAAAJ5ca8LfoAAGbbwHiJgsAAAn9517.gif);}
-	.jGoodsRecommend .iconMember.silver{background-image:url(//img11.360buyimg.com/cms/g15/M00/1A/13/rBEhWFKhMBQIAAAAAAAJ6nwr6sQAAGZ7gImjA8AAAoC503.gif);}
-	.jGoodsRecommend .iconMember.gold{background-image:url(//img12.360buyimg.com/cms/g15/M09/1A/13/rBEhWlKhL9YIAAAAAAAJ-eqq3m4AAGZ7QKJZc0AAAoR855.gif);}
-	</style>
-	<div class="j-module jGoodsRecommend" module-function="autoLayout,base" module-param="{node:'li', spacingType:'margin', size:0.5, waitCls:'jWait', underwayCls:'jGo', overCls:'jEnd'}" >
-	<ul>
-		{{ for(var i = 0; data.products[i]; i++){ }}
-		<li class="jWait" skuid="$promoRec.skuId" prompt-id="$promoRec.id">
-			<div class="jItem">
-				<div class="jPic">
-					<a href="$!jshopProduct.getBuyUrl($!promoRec.skuId)" target="_blank">
-						<img src="$!jshopCommon.getImage($!promoRec.goodsImg,4)" alt="$!promoRec.goodsName"  width="100" height="100"/>
-					</a>
-                    <div class="jShade">
-                        <div class="jShadeBg"></div>
-                        <span>此商品抢购结束，<br />请期待下一个商品！</span>
+	    .ny-goods4 li:hover .jPic .desc{ display:block;}
+	    .ny-goods4 li:hover .jBtnArea{bottom:-30px;}
+    </style>
+	<div class="ny-goods4" >
+    <div class="jSortContent">
+        <ul>
+			{{ for(var i = 0; data[i]; i++){ }}
+            <li skuid="$!goods.goodsId">
+                <div class="jItem">
+                    <div class="jPic">
+                        <a title="$!goods.wname" href='$!jshopProduct.getBuyUrl($!goods.goodsId)' target="_blank"><img src="{{ data[i].imgPath }}" alt="$!goods.wname"></a>
                     </div>
-				</div>
-				<div class="jGoodsInfo">
-					<div class="jDesc" title="$!promoRec.goodsName">
-						<a href="$!jshopProduct.getBuyUrl($!promoRec.skuId)" target="_blank">{{data.products[i].name}}</a>
-					</div>
-                   <div class="iconMember gold">金牌及以上会员专享价</div>  
-				   <div class="jPrice">
-						<div class="jdPrice">
-							<span class="jText">促销价：</span>
-							<span class="jRmb">￥</span>
-							<span class="jdNum">{{data.products[i].price}}</span>
-						</div>
-					</div>
-					<div class="jBtnArea">
-						<a href="$!jshopCommon.addCart($!promoRec.skuId)" target="_blank" class="btnWait">等待抢购</a>
-                        <a href="$!jshopCommon.addCart($!promoRec.skuId)" target="_blank" class="btnGo">加入购物车</a>
-                        <a href="$!jshopCommon.addCart($!promoRec.skuId)" target="_blank" class="btnEnd">抢购结束</a>
-					</div>
-				</div>
-			</div>
-		</li>
-		{{ } }}
-	</ul>
+                    <div class="jGoodsInfo">
+                        <div class="jDesc">
+                            <a title="$!goods.wname" href="$!jshopProduct.getBuyUrl($!goods.goodsId)" target="_blank">{{data[i].productDesc}}</a>
+                        </div>
+                        <div class="sale-tag">
+                        </div>
+                        <div class="jPrice">
+                               <label>年货节</label>
+                            <div class="jdPrice">
+                                <span class="jRmb">￥</span>
+                                <span class="jdNum">{{data[i].price}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="jBtnArea" href="$!jshopCommon.addCart($!goods.goodsId)">加入购物车</a>
+                </div>              
+            </li>   
+            {{ } }}
+        </ul>
+    </div>
 </div>
 
+
+
 </script>
+<script type="text/javascript" src="../js/INTERFACE.js"></script>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-<script type="text/javascript" src="tool.js"></script>
+<script type="text/javascript" src="../plugins/Tool/Tool.js"></script>
 <script type="text/javascript">
 	$(function(){
 		
@@ -339,20 +380,22 @@
         $.ajax({
             url: window.INTERFACE + '/product/all',
             data:{
-                sku:skuid
             },
             type:'get',
             dataType:'jsonp',
             success:function(data){
-                console.log(data);
-                var tableHtml = Tool.render(data,$('#beforeSendTable').html());
-                $('#confirmTable').html(tableHtml);
+            	var data1 = data.slice(0,4);
+                var html1 = Tool.render(data1,$('#tpl1').html());
+                $('#module1').html(html1);
+                var data2 = data.slice(4,10);
+                console.log(data2);
+              	var html2 = Tool.render(data2,$('#tpl2').html());
+                $('#module2').html(html2);
             }
         })
 
 		
-		var tpl = $('#tpl1').html();
-		var rendered = Tool.render(data,tpl);
-		$('.container').html(rendered)
 	})
 </script>
+
+
