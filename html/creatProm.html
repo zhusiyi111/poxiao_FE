@@ -267,7 +267,7 @@
                                 </td>
                                 <td class="skuid">{{data[i].sku}}</td>
                                 <td>{{data[i].productDesc}}</td>
-                                <td><img src="{{data[i].imgPath}}" style="width:60px;"></td>
+                                <td><img src="https://img11.360buyimg.com/n5{{data[i].imgPath}}" style="width:60px;"></td>
                                 <td>{{data[i].price}}</td>
                                 <td>数据还没</td>
                             </tr>
@@ -296,7 +296,7 @@
                             <tr class="gradeX">
                                 <td class="skuid">{{data[i].sku}}</td>
                                 <td>{{data[i].productDesc}}</td>
-                                <td><img src="{{data[i].imgPath}}" style="width:60px;"></td>
+                                <td><img src="https://img11.360buyimg.com/n5{{data[i].imgPath}}" style="width:60px;"></td>
                                 <td>{{data[i].price}}</td>
                                 <td>数据还没</td>
                                 <td><button class="btn btn-danger delete">删除</button></td>
@@ -467,7 +467,12 @@
                 data:data,
                 dataType:'jsonp',
                 success:function(data){
-                    console.log(data);
+                    if(data=='saved'){
+                        alert('添加成功！');
+                        window.location.href = window.location.href;
+                    }else{
+                        alert('系统异常！')
+                    }
                 }
             })
         })

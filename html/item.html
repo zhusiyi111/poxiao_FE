@@ -290,7 +290,7 @@
 			<li class="d-warp jItem"  skuid="{{data.sku}}">
 				<div class="d-left jPic">
 					<a href="$!jshopProduct.getBuyUrl($!goods.goodsId)" target="_blank">
-	          			<img src="{{data.imgPath}}" alt="$!goods.wname">
+	          			<img src="https://img11.360buyimg.com/n2{{data.imgPath}}" alt="$!goods.wname">
 		      		</a>
 				</div>
 				<div class="d-right">
@@ -328,6 +328,7 @@
 					<div id="zhijiang">
 						<span>直降</span>
 						<span>{{data.directCut}}</span>
+						<span>元</span>
 					</div>
 					{{ } }}
 					<div id="choose-btns" class="choose-btns clearfix">
@@ -419,7 +420,9 @@
 		        		function timeFormat(nS) {     
 						  return new Date(parseInt(("/Date("+nS+")/").substr(6, 13))).toLocaleDateString();     
 						};
-		        	})()
+		        	})();
+
+		        	
 
 		        	var html = Tool.render(arr[0],$('#tpl').html());
 		        	$('.container').html(html)
