@@ -314,19 +314,22 @@
 						</div>
 					</div>
 					<p class="tips">
-						<span id="endTime">2014年12月10日 12：00：00</span>
+						<span id="endTime">{{data.offSaleTime}}</span>
 						<span>恢复原价</span>
 					</p>
+					{{ if (data.promoType=="2"){ }}
 					<div id="manjian">
 						<span>满</span>
-						<span>{{data.limit}}</span>
+						<span>{{data.over}}</span>
 						<span>减</span>
-						<span>{{data.jianmian}}</span>
+						<span>{{data.cut}}</span>
 					</div>
+					{{ }else if(data.promoType=="1"){ }}
 					<div id="zhijiang">
 						<span>直降</span>
-						<span>{{data.zhijiang}}</span>
+						<span>{{data.directCut}}</span>
 					</div>
+					{{ } }}
 					<div id="choose-btns" class="choose-btns clearfix">
                         
 					<div class="d-bottom">
@@ -350,28 +353,77 @@
 <script type="text/javascript" src="../plugins/Tool/Tool.js"></script>
 <script type="text/javascript">
 	$(function(){
-		// 刷新表格
-        // $.ajax({
-        //     url: window.INTERFACE + '/product/all',
-        //     data:{
-        //     },
-        //     type:'get',
-        //     dataType:'jsonp',
-        //     success:function(data){console.log(data);
-        //     	data = data.slice(0,1);
-            	data = {
-            		price:'123',
-            		productDesc:'住大姑父i功夫i啊',
-            		sku:'312313',
-            		imgPath:'http://img14.360buyimg.com/cms/jfs/t2242/175/811514942/5039/48432c70/562f08abN623df28e.png',
-            		promPrice:'11',
-            		limit:'100',
-            		jianmian:'10',
-            		zhijiang:'30'
-            	}
-                var html = Tool.render(data,$('#tpl').html());
-                $('.container').html(html);
 
+				var sku = window.location.href.match(/sku=[0-9]+$/)[0];
+            	sku = sku.slice(4,sku.length);
+            	var skuid = sku;
+            	
+				// 刷新表格
+		        $.ajax({
+		            url: window.INTERFACE + '/product/all',
+		            data:{
+		            	sku:skuid
+		            },
+		            type:'get',
+		            dataType:'jsonp',
+		            success:function(data){
+		            	
+		               	var skuInfo = data;
+
+		                $.ajax({
+				            url: window.INTERFACE + '/promo/all',
+				            data:{
+				            	sku:skuid
+				            },
+				            type:'get',
+				            dataType:'jsonp',
+				            success:function(data){
+				            	var promoInfo = data;
+				            	process(skuInfo,promoInfo);
+				            }
+			            });
+				    }
+		        })
+
+
+		        function process(skuInfo,promoInfo){
+		        	var obj = {};
+		        	for(var i=0;i<skuInfo.length;i++){
+		        		var _obj = skuInfo[i],
+		        			_sku = _obj.sku;
+		        		obj[_sku] = skuInfo[i]
+		        	}
+		        	for(var i=0;i<promoInfo.length;i++){
+		        		var _obj = promoInfo[i],
+		        			_sku = _obj.sku;
+		        		
+		    			for(var j in _obj){
+		    				obj[_sku][j] = _obj[j];
+		    			}
+		        	}
+
+		        	var arr = [];
+		        	for(var i in obj){
+		        		arr.push(obj[i]);
+		        	}
+
+		        	arr[0].offSaleTime = (function(){
+		        		var time = arr[0].offSaleTime;
+		        		time = timeFormat(time);
+		        		time = time.split('/');
+		        		var str = '';
+		        		str=time[0]+'年'+time[1]+'月'+time[2]+'日';
+		        		return str;
+
+
+		        		function timeFormat(nS) {     
+						  return new Date(parseInt(("/Date("+nS+")/").substr(6, 13))).toLocaleDateString();     
+						};
+		        	})()
+
+		        	var html = Tool.render(arr[0],$('#tpl').html());
+		        	$('.container').html(html)
+		        }
 
                 $(document).delegate('#add','click',function(){
                 	var num = $('#buy-num').val();
