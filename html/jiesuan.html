@@ -3,6 +3,10 @@
 
 	<link rel="stylesheet" type="text/css" href="http://misc.360buyimg.com/jdf/1.0.0/unit/??ui-base/1.0.0/ui-base.css,shortcut/2.0.0/shortcut.css,global-header/1.0.0/global-header.css,myjd/2.0.0/myjd.css,nav/2.0.0/nav.css,shoppingcart/2.0.0/shoppingcart.css,global-footer/1.0.0/global-footer.css,service/1.0.0/service.css">
 	<link rel="stylesheet" type="text/css" href="http://static.360buyimg.com/item/default/1.0.32/components/??/common/common.css,/main/main.css,/address/address.css,/prom/prom.css,/colorsize/colorsize.css,/buytype/buytype.css,/track/track.css,/suits/suits.css,/baitiao/baitiao.css,/o2o/o2o.css,/summary/summary.css,/buybtn/buybtn.css,/crumb/crumb.css,/fittings/fittings.css,/detail/detail.css,/contact/contact.css,/popbox/popbox.css,/preview/preview.css,/info/info.css,/imcenter/imcenter.css,/jdservice/jdservice.css,/popupCar/popupCar.css">
+	 <link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
 	<style type="text/css">
 		.main{
 			width: 1200px;
@@ -150,16 +154,223 @@
 	<!-- 主站头部结束 -->
 
 	<div class="container" style="margin:0 auto;width: 1220px;">
-	
+		
 	</div>
+	<div class="col-sm-12 foot" style="font-size: 18px;font-weight: bold;">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4">
+			<span>已选择</span>
+			<span id="itemNum" style="color:red"></span>
+			<span>个商品</span>
+			<span>总价：</span>
+			<span id=totalPrice style="color:red"></span>
+			<span>元</span>
+		</div>
+		<div class="col-sm-4">
+			<button  class="btn btn-primary" style="width:100px">去结算</button>
+		</div>
+	</div>
+	
 
 </body>
-
+    <script type="text/template" id="promoTpl">
+            <div class="col-sm-12 group">
+                <div class="ibox-content">
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>是否选中</th>
+                                <th style="width: 50%">商品名称</th>
+                                <th>商品图片</th>
+                                <th>实时价</th>
+                                <th>数量</th>
+                                <th>小计</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{ for(var i = 0; data[i]; i++){ }}
+                            <tr class="gradeX">
+                                <td>
+                                    <input type="checkbox" value="">
+                                </td>
+                                <td>{{data[i].productDesc}}</td>
+                                <td><img src="{{data[i].imgPath}}" style="width:60px;"></td>
+                                <td class="nowPrice">{{data[i].price}}</td>
+                                <th>
+									<input class="number" type="number" name="" value="1" min="0" style="width: 40px;">
+                                </th>
+                                <th class="xiaoji">{{data[i].price}}</th>
+                                <td>
+                                	<button class="btn btn-danger delete">删除</button>
+                                </td>
+                            </tr>
+                            {{ } }}
+                         </tbody>
+                    </table>
+                </div>
+            </div>
+    </script>
+      <script type="text/template" id="noPromoTpl">
+      		<h2>普通商品</h2>
+            <div class="col-sm-12">
+                <div class="ibox-content">
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>是否选中</th>
+                                <th style="width: 50%;">商品名称</th>
+                                <th>商品图片</th>
+                                <th>京东价</th>
+                                <th>数量</th>
+                                <th>小计</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{ for(var i = 0; data[i]; i++){ }}
+                            <tr class="gradeX">
+                                <td>
+                                    <input type="checkbox" value="">
+                                </td>
+                                <td>{{data[i].productDesc}}</td>
+                                <td><img src="{{data[i].imgPath}}" style="width:60px;"></td>
+                                <td class="nowPrice">{{data[i].price}}</td>
+                                <th>
+									<input class="number" type="number" name="" value="1" min="0" style="width: 40px;">
+                                </th>
+                                <th class="xiaoji">{{data[i].price}}</th>
+                                <td>
+                                	<button class="btn btn-danger delete">删除</button>
+                                </td>
+                            </tr>
+                            {{ } }}
+                         </tbody>
+                    </table>
+                </div>
+            </div>
+    </script>
 <script type="text/javascript" src="../js/INTERFACE.js"></script>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript" src="../plugins/Tool/Tool.js"></script>
 <script type="text/javascript">
 	$(function(){
-		
+
+		// 刷新表格
+        $.ajax({
+            url: window.INTERFACE + '/product/all',
+            data:{
+            },
+            type:'get',
+            dataType:'jsonp',
+            success:function(data){
+            	
+                data = data.slice(0,10);
+                var skuInfo = data;
+                var skuids = [];
+                for(var i=0;i<data.length;i++){
+                	skuids.push(data[i].sku);
+                }
+                skuids = skuids.join(',');
+                $.ajax({
+		            url: window.INTERFACE + '/promo/all',
+		            data:{
+		            	sku:skuids
+		            },
+		            type:'get',
+		            dataType:'jsonp',
+		            success:function(data){
+		            	var promoInfo = data;
+		            	process(skuInfo,promoInfo);
+		            }
+	            });
+		    }
+        })
+
+
+        function process(skuInfo,promoInfo){
+        	var obj = {};
+        	for(var i=0;i<skuInfo.length;i++){
+        		var _obj = skuInfo[i],
+        			_sku = _obj.sku;
+        		obj[_sku] = skuInfo[i]
+        	}
+        	for(var i=0;i<promoInfo.length;i++){
+        		var _obj = promoInfo[i],
+        			_sku = _obj.sku;
+        		
+    			for(var j in _obj){
+    				obj[_sku][j] = _obj[j];
+    			}
+        	}
+        	render(obj);
+        }
+
+
+        function render(obj){
+        	var arr = [];
+        	for(var i in obj){
+        		arr.push(obj[i]);
+        	}
+        	console.log(arr);
+
+        	var promoIds = (function(){
+        		var result = [];
+        		for(var i=0;i<arr.length;i++){
+        			if(result.indexOf(arr[i].promoId)===-1 && arr[i].promoId!==undefined){
+        				result.push(arr[i].promoId)
+        			}
+        		}
+        		return result;
+        	})();
+        	var sorted = {};
+        	var noPromo = [];
+        	for(var i=0;i<promoIds.length;i++){
+        		sorted[promoIds[i]] = [];
+        	}
+        	for(var i=0;i<arr.length;i++){
+        		if(arr[i].promoId){
+        			sorted[arr[i].promoId].push(arr[i])
+        		}else{
+        			noPromo.push(arr[i])
+        		}
+        	}
+        	
+        	var resultHtml = ''
+
+        	for(var i in sorted){
+        		resultHtml += Tool.render(sorted[i],$('#promoTpl').html());
+        	}
+
+    		resultHtml += Tool.render(noPromo,$('#noPromoTpl').html());
+
+        	$('.container').html(resultHtml);
+        }
+
+        $(document).delegate('.number','click',function(){
+        	var nowPrice = $(this).closest('tr').find('.nowPrice').text();
+        	$(this).closest('tr').find('.xiaoji').text(nowPrice*$(this).val())
+        })
+
+        $(document).delegate('.delete','click',function(){
+        	var _this = $(this);
+        	if(_this.closest('tbody').find('tr').length<=1){
+        		_this.closest('.group').remove();
+        	}else{
+        		_this.closest('tr').remove();
+        	}
+        })
+
+        setInterval(function(){
+        	var totalPrice = (function(){
+        		var result = 0;
+        		$('.xiaoji').each(function(){
+        			result += new Number($(this).text());
+        		})
+        		return result;
+        	})()
+        	$('#totalPrice').text(totalPrice);
+        },500);
+
 	})
 </script>
