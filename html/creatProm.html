@@ -97,47 +97,35 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">活动名称</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" id="promoName">
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>
-                            <div class="form-group">
+                            <div class="form-group" id="promoPlatform">
                                 <label class="col-sm-2 control-label">促销平台
                                 </label>
 
                                 <div class="col-sm-10">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" value="">PC端</label>
+                                            <input type="checkbox" value="1">PC端</label>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" value="">M端</label>
+                                            <input type="checkbox" value="2">M端</label>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" value="">手Q</label>
+                                            <input type="checkbox" value="3">手Q</label>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" value="">微信</label>
+                                            <input type="checkbox" value="4">微信</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>
-                            <div class="form-group ">
-                                <label class="col-sm-2 control-label">促销人群</label>
-                                <div class="col-sm-10 bs-docs-example">
-                                    <select class="span2">
-                                      <option>普通用户</option>
-                                      <option>铜牌用户及以上</option>
-                                      <option>银牌用户及以上</option>
-                                      <option>金牌用户及以上</option>
-                                      <option>仅PLUS会员</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="hr-line-dashed"></div>
+                           
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">活动时间</label>
 
@@ -146,30 +134,30 @@
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>
-                            <div class="form-group ">
+                            <div class="form-group" id="promoType">
                                 <label class="col-sm-2 control-label">促销类型</label>
                                 <div class="col-sm-10 bs-docs-example">
                                     <select class="span2">
-                                      <option>直降促销</option>
-                                      <option>满减促销</option>
+                                      <option value="2">满减促销</option> 
+                                      <option value="1">直降促销</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-sm-2 control-label">促销方式</label>
-                                <div class="col-sm-10 bs-docs-example">
-                                    <div class="pull-left">满</div>
+                                <div class="col-sm-10 bs-docs-example" id="manjiann">
+                                    <div class="pull-left" style="line-height: 2">满</div>
                                     <div class="col-sm-1">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" id="over">
                                     </div>
-                                    <div class="pull-left">减</div>
+                                    <div class="pull-left" style="line-height: 2">减</div>
                                     <div class="col-sm-1">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" id="cut">
                                     </div>
                                 </div>
-                                <div class="col-sm-10" id="down">
+                                <div class="col-sm-10" id="down" style="display: none;">
                                     <div class="pull-left">直降&nbsp</div>
-                                    <input type="text" class="col-sm-1" id="downNum">
+                                    <input type="text" class="col-sm-1" id="directCut">
                                     <div class="pull-left">元</div>
                                 </div>
                             </div>
@@ -204,79 +192,18 @@
                              <div class="hr-line-dashed"></div>
                              <h1>参加促销的商品</h1>
                             <div class="form-group" id="confirmTable">
-                                <div class="col-sm-2"></div>
-                                <div class="col-sm-8">
-                                    <div class="ibox-content">
-                                        <table class="table table-striped table-bordered table-hover dataTables-example">
-                                            <thead>
-                                                <tr>
-                                                    <th>商品skuID</th>
-                                                    <th>促销ID</th>
-                                                    <th>活动名称</th>
-                                                    <th>促销类型</th>
-                                                    <th>促销规则</th>
-                                                    <th>开始时间</th>
-                                                    <th>结束时间</th>
-                                                    <th>状态</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="gradeX">
-                                                    <td>Trident</td>
-                                                    <td>Trident</td>
-                                                    <td>Internet Explorer 4.0</td>
-                                                    <td>Win 95+</td>
-                                                    <td class="center">4</td>
-                                                    <td class="center">X</td>
-                                                    <td class="center">4</td>
-                                                    <td class="center">X</td>
-                                                </tr>
-                                                <tr class="gradeX">
-                                                    <td>Trident</td>
-                                                    <td>Trident</td>
-                                                    <td>Internet Explorer 4.0</td>
-                                                    <td>Win 95+</td>
-                                                    <td class="center">4</td>
-                                                    <td class="center">X</td>
-                                                    <td class="center">4</td>
-                                                    <td class="center">X</td>
-                                                </tr>
-                                                <tr class="gradeX">
-                                                    <td>Trident</td>
-                                                    <td>Trident</td>
-                                                    <td>Internet Explorer 4.0</td>
-                                                    <td>Win 95+</td>
-                                                    <td class="center">4</td>
-                                                    <td class="center">X</td>
-                                                    <td class="center">4</td>
-                                                    <td class="center">X</td>
-                                                </tr>
-                                                <tr class="gradeX">
-                                                    <td>Trident</td>
-                                                    <td>Trident</td>
-                                                    <td>Internet Explorer 4.0</td>
-                                                    <td>Win 95+</td>
-                                                    <td class="center">4</td>
-                                                    <td class="center">X</td>
-                                                    <td class="center">4</td>
-                                                    <td class="center">X</td>
-                                                </tr>
-                                                <tr class="gradeX">
-                                                    <td>Trident</td>
-                                                    <td>Trident</td>
-                                                    <td>Internet Explorer 4.0</td>
-                                                    <td>Win 95+</td>
-                                                    <td class="center">4</td>
-                                                    <td class="center">X</td>
-                                                    <td class="center">4</td>
-                                                    <td class="center">X</td>
-                                                </tr>
-                                             </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                             
                             </div>
                             <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-2">
+                                        
+                                </div> 
+                                <div class="col-sm-2">
+                                       <button class="btn btn-primary" id="submit">确认添加</button>
+                                </div>  
+                            </div>
+                            
                         </form>
                     </div>
 
@@ -454,8 +381,8 @@
             }
         }, function(start, end, label) {
           $('#dateRange').attr({
-            'data-beginTime:':start.format('YYYY-MM-DD hh:mm:ss'),
-            'data-endTime':end.format('YYYY-MM-DD hh:mm:ss')
+            'data-beginTime':start.format('YYYY-MM-DD-hh:mm:ss'),
+            'data-endTime':end.format('YYYY-MM-DD-hh:mm:ss')
             });
 
         });
@@ -472,6 +399,10 @@
                 skuid.push($(this).text())
             })
             skuid = skuid.join(',');
+            if(skuid===''){
+                $('#closeModal').trigger('click');
+                return;
+            }
                 // 刷新表格
                 $.ajax({
                     url: window.INTERFACE + '/product/all',
@@ -481,7 +412,6 @@
                     type:'get',
                     dataType:'jsonp',
                     success:function(data){
-                        console.log(data);
                         var tableHtml = Tool.render(data,$('#beforeSendTable').html());
                         $('#confirmTable').html(tableHtml);
                     }
@@ -501,7 +431,60 @@
             return false;
         })
 
+        $(document).delegate('#submit','click',function(){
+            var data = {
+                promoName : $('#promoName').val(),
+                promoPlatform : (function(){
+                    var str = [];
+                    $('#promoPlatform [type="checkbox"]').each(function(){
+                        if($(this).is(':checked')){
+                            str.push($(this).val());
+                        }
+                    });
+                    return str.join(',');
+                })(),
+                promoType : (function(){
+                    return $('#promoType option').filter(function(){
+                        return $(this).is(':selected')
+                    }).attr('value');
+                })(),
+                promoStartTime : $('#dateRange').attr('data-begintime') || '2017-01-01-01:00:00',
+                promoEndTime : $('#dateRange').attr('data-endtime') || '2017-01-11-01:00:00',
+                over : $('#over').val() || '-1',
+                cut : $('#cut').val() || '-1',
+                directCut : $('#directCut').val() || '-1',
+                sku : (function(){
+                    var str = [];
+                    $('#confirmTable .skuid').each(function(){
+                        str.push($(this).text());
+                    })
+                    str = str.join(',');
+                    return str;
+                })()
+            }
+            $.ajax({
+                url:window.INTERFACE + '/promo/add',
+                data:data,
+                dataType:'jsonp',
+                success:function(data){
+                    console.log(data);
+                }
+            })
+        })
 
+        $(document).delegate('#promoType select','change',function(){
+            var _this = $(this);
+            var active = $(this).find('option').filter(function(){
+                return $(this).is(':selected');
+            }).attr('value');
+            if(active==1){
+                $('#manjiann').hide();
+                $('#down').show();
+            }else{
+                $('#down').hide();
+                $('#manjiann').show();
+            }
+        })
         
 
     });
