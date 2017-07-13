@@ -1,0 +1,1 @@
+window.INTERFACE = 'http://192.168.0.117:8080';
