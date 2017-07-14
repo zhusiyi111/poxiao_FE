@@ -217,7 +217,7 @@
 			.d-order .d-price{
 				display: inline-block;
 				margin-top:10px;
-				width: 345px;
+				width: 650px;
 				height: 31px;
 			}
 			.d-order .d-price p{
@@ -310,27 +310,34 @@
 						<div class="d-price" id="prom">
 							<p class="d-word">促销价:</p>
 							<p class="d-bold">￥</p>
-							<p class="d-number d-bold">{{data.promPrice}}</p>
+
+							{{ if(data.active==1){ }}
+									<p class="d-number d-bold">{{data.promoPrice}}</p>
+							{{ }else{ }}
+									<p class="d-number d-bold">促销暂未开始</p>
+						    {{  } }}
+
 						</div>
 					</div>
 					<p class="tips">
 						<span id="endTime">{{data.offSaleTime}}</span>
 						<span>恢复原价</span>
 					</p>
-					{{ if (data.promoType=="2"){ }}
-					<div id="manjian">
-						<span>满</span>
-						<span>{{data.over}}</span>
-						<span>减</span>
-						<span>{{data.cut}}</span>
-					</div>
-					{{ }else if(data.promoType=="1"){ }}
-					<div id="zhijiang">
-						<span>直降</span>
-						<span>{{data.directCut}}</span>
-						<span>元</span>
-					</div>
-					{{ } }}
+						{{ if (data.promoType=="2"){ }}
+						<div id="manjian">
+							<span>满</span>
+							<span>{{data.over}}</span>
+							<span>减</span>
+							<span>{{data.cut}}</span>
+						</div>
+						{{ }else if(data.promoType=="1"){ }}
+						<div id="zhijiang">
+							<span>直降</span>
+							<span>{{data.directCut}}</span>
+							<span>元</span>
+						</div>
+						{{ } }}
+					
 					<div id="choose-btns" class="choose-btns clearfix">
                         
 					<div class="d-bottom">
@@ -350,11 +357,11 @@
 </div>
 </script>
 <script type="text/javascript" src="../js/INTERFACE.js"></script>
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="../js/jquery.min.js?v=2.1.4"></script>
 <script type="text/javascript" src="../plugins/Tool/Tool.js"></script>
 <script type="text/javascript">
 	$(function(){
-
+			setInterval(function(){
 				var sku = window.location.href.match(/sku=[0-9]+$/)[0];
             	sku = sku.slice(4,sku.length);
             	var skuid = sku;
@@ -422,8 +429,29 @@
 						};
 		        	})();
 
-		        	
+		        	arr[0].promoPrice = (function(){
+		        		var price = arr[0].price;
+		        		var promoPrice = '';
+		        		if(arr[0].promoType=='2'){
+		        			promoPrice = price+'(满'+arr[0].over+'减'+arr[0].cut+'元)';
+		        		}else if(arr[0].promoType=='1'){
+		        			promoPrice = new Number(price) - new Number	(arr[0].directCut);
+		        		}else{
+		        			promoPrice = '暂无促销信息'
+		        		}
+		        		return promoPrice;
+		        	})()
 
+		        	arr[0].promoState = (function(){
+		        		var nowTime = Date.parse(new Date());
+		        		if(nowTime>new Number(arr[0].promoStartTime && nowTime<new Number(arr[0].promoEndTime))){
+		        			return 1;
+		        		}else{
+		        			return 0;
+		        		}
+		        	})()
+
+		        	console.log(arr[0])
 		        	var html = Tool.render(arr[0],$('#tpl').html());
 		        	$('.container').html(html)
 		        }
@@ -442,10 +470,12 @@
                 		$('#buy-num').val(0);
                 	}else{
                 		$('#buy-num').val(num);
-                	}
+                	}		
                 	
 
                 })
+			},3000);
+				
         //     }
         // })
 	})

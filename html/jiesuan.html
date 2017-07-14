@@ -54,9 +54,11 @@
                             <tr>
                                 <th>是否选中</th>
                                 <th>参与促销名称</th>
-                                <th style="width: 50%">商品名称</th>
+                                <th style="width: 30%">商品名称</th>
                                 <th>商品图片</th>
-                                <th>实时价</th>
+                                <th>京东价</th>
+                                <th>促销价</th>
+                                <th>促销方式</th>
                                 <th>数量</th>
                                 <th>小计</th>
                                 <th>操作</th>
@@ -72,10 +74,20 @@
                                 <td>{{data[i].productDesc}}</td>
                                 <td><img src="https://img11.360buyimg.com/n5{{data[i].imgPath}}" style="width:60px;"></td>
                                 <td class="nowPrice">{{data[i].price}}</td>
-                                <th>
+                                <td class="promoPrice">{{data[i].promoPrice}}</td>
+                                {{ if(data[i].promoType==1){ }}
+                                <td>直降{{data[i].directCut	}}</td>
+                                {{ }else{ }}
+                                <td>满{{data[i].over}}减{{data[i].cut}}元</td>
+                                {{ } }}
+                                <td>
 									<input class="number" type="number" name="" value="1" min="0" style="width: 40px;">
-                                </th>
-                                <th class="xiaoji">{{data[i].price}}</th>
+                                </td>
+                                 {{ if(data[i].promoType==1){ }}
+                                <td class="xiaoji">{{data[i].promoPrice}}</td>
+                                {{ }else{ }}
+                                  <td class="xiaoji">{{data[i].price}}</td>
+								{{ } }}
                                 <td>
                                 	<button class="btn btn-danger delete">删除</button>
                                 </td>
@@ -177,6 +189,10 @@
     			for(var j in _obj){
     				obj[_sku][j] = _obj[j];
     			}
+
+    				
+
+
         	}
         	render(obj);
         }
@@ -210,10 +226,23 @@
         			noPromo.push(arr[i])
         		}
         	}
-        	
+
+
         	var resultHtml = ''
 
         	for(var i in sorted){
+        		sorted[i][0]['promoPrice'] = (function(){
+		        		var price = sorted[i][0].price;
+		        		var promoPrice = '';
+		        		if(sorted[i][0].promoType=='2'){
+		        			promoPrice = price;
+		        		}else if(sorted[i][0].promoType=='1'){
+		        			promoPrice = new Number(price) - new Number	(sorted[i][0].directCut);
+		        		}else{
+		        			promoPrice = '暂无促销活动'
+		        		}
+		        		return promoPrice;
+		        	})()
         		resultHtml += Tool.render(sorted[i],$('#promoTpl').html());
         	}
 
@@ -223,7 +252,11 @@
         }
 
         $(document).delegate('.number','click',function(){
-        	var nowPrice = $(this).closest('tr').find('.nowPrice').text();
+        	if($(this).closest('tr').find('.promoPrice').length>0){
+        			var nowPrice = $(this).closest('tr').find('.promoPrice').text();
+        		}else{
+        			var nowPrice = $(this).closest('tr').find('.nowPrice').text();
+        		}
         	$(this).closest('tr').find('.xiaoji').text(nowPrice*$(this).val())
         })
 
@@ -256,7 +289,12 @@
 
         $(document).delegate('[type="checkbox"]','click',function(){
         	if($(this).is(':checked')){
-        		var nowPrice = $(this).closest('tr').find('.nowPrice').text();
+        		if($(this).closest('tr').find('.promoPrice').length>0){
+        			var nowPrice = $(this).closest('tr').find('.promoPrice').text();
+        		}else{
+        			var nowPrice = $(this).closest('tr').find('.nowPrice').text();
+        		}
+        		
         		var num = $(this).closest('tr').find('.number').val()
         		$(this).closest('tr').find('.xiaoji').text(nowPrice*num)
         	}else{

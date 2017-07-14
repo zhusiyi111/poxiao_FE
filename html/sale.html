@@ -8,6 +8,27 @@
 			height: 100%;
 			margin:0 auto;
 		}
+		.addCart{
+			display: block;
+			position: fixed;	
+			top:50%;
+			right: 30px;
+			width: 	80px;
+	        height: 40px;
+	        line-height: 40px;
+	        font-size: 14px;
+	        text-align: center;
+	        background: #e40b34;
+	        z-index: 10;
+	        color: #d50032;
+	        border-radius: 	10px;
+	       -webkit-transition: all .3s ease-in 0s;
+	        -moz-transition: all .3s ease-in 0s;
+	        -ms-transition: all .3s ease-in 0s;
+	        -o-transition: all .3s ease-in 0s;
+	        transition: all .3s linear 0s;
+	        color:#fff;
+		}
 	</style>
 </head>
 
@@ -154,8 +175,9 @@
 			<div id="module1"></div>
 			<div id="module2"></div>
 		</div>
-	</div>
 
+	</div>
+	<a class="btn btn-success addCart" href="./jiesuan.html">一件加购</a>
 	
 
 
@@ -210,8 +232,8 @@
 		<li class="jWait" prompt-id="$promoRec.id">
 			<div class="jItem">
 				<div class="jPic">
-					<a href="$!jshopProduct.getBuyUrl($!promoRec.skuId)" target="_blank">
-						<img src="{{data[i].imgPath}}" alt="$!promoRec.goodsName" height="240" width="240" />
+					<a href="./item.html?sku={{data[i].sku}}" target="_blank">
+						<img src="https://img11.360buyimg.com/n2{{data[i].imgPath}}" alt="$!promoRec.goodsName" height="240" width="240" />
 					</a>
                     <div class="jShade">
                         <div class="jShadeBg"></div>
@@ -220,7 +242,7 @@
 				</div>
 				<div class="jGoodsInfo">
 					<div class="jDesc" title="$!promoRec.goodsName">
-						<a href="$!jshopProduct.getBuyUrl($!promoRec.skuId)" target="_blank">{{data[i].productDesc}}</a>
+						<a href="./item.html?sku={{data[i].sku}}" target="_blank">{{data[i].productDesc}}</a>
 					</div>
                    <div class="iconMember gold">金牌及以上会员专享价</div>  
 				   <div class="jPrice">
@@ -231,7 +253,7 @@
 						</div>
 					</div>
 					<div class="jBtnArea">
-						<a target="_blank" href="$!jshopCommon.addCart($!promoRec.skuId)">加入购物车</a>
+						<a target="_blank" href="./item.html?sku={{data[i].sku}}">加入购物车</a>
 					</div>
 				</div>
 			</div>
@@ -343,11 +365,11 @@
             <li skuid="$!goods.goodsId">
                 <div class="jItem">
                     <div class="jPic">
-                        <a title="$!goods.wname" href='$!jshopProduct.getBuyUrl($!goods.goodsId)' target="_blank"><img src="{{ data[i].imgPath }}" alt="$!goods.wname"></a>
+                        <a title="$!goods.wname" href='./item.html?sku={{data[i].sku}}' target="_blank"><img src="https://img11.360buyimg.com/n2{{ data[i].imgPath }}" alt="$!goods.wname"></a>
                     </div>
                     <div class="jGoodsInfo">
                         <div class="jDesc">
-                            <a title="$!goods.wname" href="$!jshopProduct.getBuyUrl($!goods.goodsId)" target="_blank">{{data[i].productDesc}}</a>
+                            <a title="$!goods.wname" href="./item.html?sku={{data[i].sku}}" target="_blank">{{data[i].productDesc}}</a>
                         </div>
                         <div class="sale-tag">
                         </div>
@@ -359,7 +381,7 @@
                             </div>
                         </div>
                     </div>
-                    <a class="jBtnArea" href="$!jshopCommon.addCart($!goods.goodsId)">加入购物车</a>
+                    <a class="jBtnArea" href="./item.html?sku={{data[i].sku}}">加入购物车</a>
                 </div>              
             </li>   
             {{ } }}
@@ -376,6 +398,33 @@
 <script type="text/javascript">
 	$(function(){
 		
+        // $.ajax({
+        //     url: window.INTERFACE + '/product/all',
+        //     data:{
+        //     },
+        //     type:'get',
+        //     dataType:'jsonp',
+        //     success:function(data){
+
+
+        //     	var data1 = data.slice(0,4);
+        //         var html1 = Tool.render(data1,$('#tpl1').html());
+        //         $('#module1').html(html1);
+        //         var data2 = data.slice(4,10);
+
+        //       	var html2 = Tool.render(data2,$('#tpl2').html());
+        //         $('#module2').html(html2);
+
+        //     }
+        // })
+        setInterval(function(){
+// 刷新表格
+		},2000);
+		
+
+
+
+
 		// 刷新表格
         $.ajax({
             url: window.INTERFACE + '/product/all',
@@ -384,16 +433,68 @@
             type:'get',
             dataType:'jsonp',
             success:function(data){
-            	var data1 = data.slice(0,4);
-                var html1 = Tool.render(data1,$('#tpl1').html());
-                $('#module1').html(html1);
-                var data2 = data.slice(4,10);
-                console.log(data2);
-              	var html2 = Tool.render(data2,$('#tpl2').html());
-                $('#module2').html(html2);
-            }
+            	
+                data = data.slice(0,10);
+                var skuInfo = data;
+                var skuids = [];
+                for(var i=0;i<data.length;i++){
+                	skuids.push(data[i].sku);
+                }
+                skuids = skuids.join(',');
+                $.ajax({
+		            url: window.INTERFACE + '/promo/all',
+		            data:{
+		            	sku:skuids
+		            },
+		            type:'get',
+		            dataType:'jsonp',
+		            success:function(data){
+		            	var promoInfo = data;
+		            	process(skuInfo,promoInfo);
+		            }
+	            });
+		    }
         })
 
+
+        function process(skuInfo,promoInfo){
+        	var obj = {};
+        	for(var i=0;i<skuInfo.length;i++){
+        		var _obj = skuInfo[i],
+        			_sku = _obj.sku;
+        		obj[_sku] = skuInfo[i]
+        	}
+        	for(var i=0;i<promoInfo.length;i++){
+        		var _obj = promoInfo[i],
+        			_sku = _obj.sku;
+        		
+    			for(var j in _obj){
+    				obj[_sku][j] = _obj[j];
+    			}
+
+    				
+
+
+        	}
+        	render(obj);
+        }
+
+
+        function render(obj){
+        	var arr = [];
+        	for(var i in obj){
+        		arr.push(obj[i]);
+        	}
+
+    		var data1 = arr.slice(0,4);
+    		
+            var html1 = Tool.render(data1,$('#tpl1').html());
+            $('#module1').html(html1);
+            var data2 = arr.slice(4,10);
+
+          	var html2 = Tool.render(data2,$('#tpl2').html());
+            $('#module2').html(html2);
+        }
 		
 	})
 </script>
